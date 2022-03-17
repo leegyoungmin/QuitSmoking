@@ -25,8 +25,7 @@ class HomeViewController:UIViewController{
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("단계 확인", for: .normal)
-        button.addTarget(HomeViewController.self, action: #selector(tappedTitleButton), for: .touchUpInside)
-        button.backgroundColor = .lightGray
+        button.backgroundColor = graycolor
         button.layer.cornerRadius = 10
         return button
     }()
@@ -39,11 +38,10 @@ class HomeViewController:UIViewController{
         return text
     }()
     
-    let successButton:BaseButton = {
+    var successButton:BaseButton = {
         let button = BaseButton(frame: .zero)
         button.setTitle("오늘하루 성공", for: .normal)
         button.backgroundColor = .systemBlue
-        button.addTarget(self, action: #selector(tappedSuccessButton), for: .touchUpInside)
         return button
     }()
     
@@ -51,15 +49,13 @@ class HomeViewController:UIViewController{
         let button = BaseButton(frame: .zero)
         button.setTitle("흡연", for: .normal)
         button.backgroundColor = UIColor.systemRed
-        button.addTarget(self, action: #selector(tappedFailButton), for: .touchUpInside)
         return button
     }()
     
     var suppressButton:BaseButton = {
         let button = BaseButton(frame: .zero)
-        button.backgroundColor = .lightGray
+        button.backgroundColor = graycolor
         button.setTitle("힘들때 참기", for: .normal)
-        button.addTarget(self, action: #selector(tappedSupressButton), for: .touchUpInside)
         return button
     }()
     
@@ -70,15 +66,25 @@ class HomeViewController:UIViewController{
         return view
     }()
     
-    
+    var subView:HomeTitleView = {
+        let subView = HomeTitleView()
+        subView.layer.cornerRadius = 10
+        subView.backgroundColor = graycolor
+        return subView
+    }()
+
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setButtonTarget()
         setUpViews()
-        
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.calculateDate()
-        }
+    }
+    
+    func setButtonTarget(){
+        successButton.addTarget(self, action: #selector(tappedSuccessButton), for: .touchUpInside)
+        failButton.addTarget(self, action: #selector(tappedFailButton), for: .touchUpInside)
+        suppressButton.addTarget(self, action: #selector(tappedSupressButton), for: .touchUpInside)
+        titleButton.addTarget(self, action: #selector(tappedTitleButton), for: .touchUpInside)
     }
     
     func setUpViews(){
@@ -103,7 +109,8 @@ class HomeViewController:UIViewController{
             successButton,
             failButton,
             suppressButton,
-            LineView
+            LineView,
+            subView
         ].forEach{
             view.addSubview($0)
         }
@@ -147,6 +154,12 @@ class HomeViewController:UIViewController{
             $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(2)
         }
+        
+        subView.snp.makeConstraints{
+            $0.top.equalTo(LineView.snp.bottom).offset(20)
+            $0.leading.equalTo(LineView.snp.leading)
+            $0.trailing.equalTo(LineView.snp.trailing)
+        }
     }
     
     @objc func tappedTitleButton(){
@@ -154,7 +167,7 @@ class HomeViewController:UIViewController{
     }
     
     @objc func tappedSuccessButton(){
-        self.calculateDate()
+        print("Tapped success Button")
     }
     @objc func tappedFailButton(){
         print("Tapped Fail Button")
@@ -163,17 +176,4 @@ class HomeViewController:UIViewController{
         print("Tapped Supress Button")
     }
 
-}
-
-extension HomeViewController{
-    func calculateDate(){
-        let calendar = Calendar(identifier: .gregorian)
-        let comp = DateComponents(year:2021,month: 3,day: 17)
-        if let startDate = calendar.date(from: comp){
-            let offsetComps = calendar.dateComponents([.day,.hour,.minute,.second], from: startDate, to: Date())
-            if case let (d?,h?,m?,s?) = (offsetComps.day,offsetComps.hour,offsetComps.minute,offsetComps.second){
-                timeText.text = "\(d)일 \(h)시간 \(m)분 \(s)초"
-            }
-        }
-    }
 }

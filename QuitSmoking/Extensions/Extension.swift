@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+let graycolor = UIColor(white: 0, alpha: 0.1)
 
 class BaseButton:UIButton{
     override init(frame: CGRect) {
@@ -18,5 +19,17 @@ class BaseButton:UIButton{
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UILabel{
+    func contentView(text:String,fontSize:CGFloat,textColor:UIColor) -> UILabel{
+        let label = UILabel()
+        label.textColor = textColor
+        label.text = text
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 1
+        label.font = UIFont.systemFont(ofSize: fontSize)
+        return label
     }
 }
