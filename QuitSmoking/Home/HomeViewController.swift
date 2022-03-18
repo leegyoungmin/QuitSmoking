@@ -11,8 +11,10 @@ import SnapKit
 
 class HomeViewController:UIViewController{
     
-    var TextView : UITextView = {
-        let text = UITextView()
+    let wises:[wise] = Bundle.main.decode("wise.json")
+    
+    var TextView : UILabel = {
+        let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.textColor = .black
         text.font = .systemFont(ofSize: 25)
@@ -66,12 +68,9 @@ class HomeViewController:UIViewController{
         return view
     }()
     
-    var subView:HomeTitleView = {
-        let subView = HomeTitleView()
-        subView.layer.cornerRadius = 10
-        subView.backgroundColor = graycolor
-        return subView
-    }()
+    let quitView = QuitTimeView()
+    let smokingView = SmokingTimeView()
+    
 
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -88,6 +87,7 @@ class HomeViewController:UIViewController{
     }
     
     func setUpViews(){
+        view.backgroundColor = graycolor
         
         //MARK: - Button Const
         titleButton.snp.makeConstraints{
@@ -110,7 +110,8 @@ class HomeViewController:UIViewController{
             failButton,
             suppressButton,
             LineView,
-            subView
+            quitView,
+            smokingView
         ].forEach{
             view.addSubview($0)
         }
@@ -155,10 +156,16 @@ class HomeViewController:UIViewController{
             $0.height.equalTo(2)
         }
         
-        subView.snp.makeConstraints{
+        quitView.snp.makeConstraints{
             $0.top.equalTo(LineView.snp.bottom).offset(20)
             $0.leading.equalTo(LineView.snp.leading)
             $0.trailing.equalTo(LineView.snp.trailing)
+        }
+        
+        smokingView.snp.makeConstraints{
+            $0.top.equalTo(quitView.snp.bottom).offset(20)
+            $0.leading.equalTo(quitView.snp.leading)
+            $0.trailing.equalTo(quitView.snp.trailing)
         }
     }
     
@@ -171,6 +178,8 @@ class HomeViewController:UIViewController{
     }
     @objc func tappedFailButton(){
         print("Tapped Fail Button")
+        
+        print(wises)
     }
     @objc func tappedSupressButton(){
         print("Tapped Supress Button")

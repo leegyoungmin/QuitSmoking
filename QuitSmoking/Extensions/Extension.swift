@@ -10,6 +10,13 @@ import UIKit
 
 let graycolor = UIColor(white: 0, alpha: 0.1)
 
+
+func decimalNumber(data:NSNumber)->String{
+    let numberformat = NumberFormatter()
+    numberformat.numberStyle = .decimal
+    return numberformat.string(from: data)!
+}
+
 class BaseButton:UIButton{
     override init(frame: CGRect) {
         super.init(frame: frame)
