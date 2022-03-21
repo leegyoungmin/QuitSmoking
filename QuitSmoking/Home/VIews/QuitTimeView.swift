@@ -67,7 +67,7 @@ extension QuitTimeView{
             if case let (d?,h?,m?,s?) = (offsetComps.day,offsetComps.hour,offsetComps.minute,offsetComps.second){
                 contentView.text = "\(d)일 \(h)시간 \(m)분 \(s)초"
                 guard let money = d*4500 as? NSNumber else{return}
-                secondContentView.text = "\(decimalNumber(data: money))"
+                secondContentView.text = "\(decimalNumber(data: money)) 원"
             }
         }
     }

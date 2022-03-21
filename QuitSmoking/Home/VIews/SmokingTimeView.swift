@@ -10,18 +10,18 @@ import UIKit
 
 class SmokingTimeView:UIView{
     lazy var smokingTitle:UILabel = {
-        return UILabel().contentView(text: "금연 기간", fontSize: 20,textColor: .gray)
+        return UILabel().contentView(text: "흡연 기간", fontSize: 20,textColor: .gray)
     }()
     
     lazy var smokingTime:UILabel = {
         return UILabel().contentView(text: "", fontSize: 15,textColor: .black)
     }()
     lazy var smokingSaveTitle:UILabel = {
-        return UILabel().contentView(text: "모은 금액", fontSize: 20, textColor: .gray)
+        return UILabel().contentView(text: "사용 금액", fontSize: 20, textColor: .gray)
     }()
     
     lazy var smokingSaveMoney:UILabel = {
-        return UILabel().contentView(text: "20,000", fontSize: 15, textColor: .black)
+        return UILabel().contentView(text: "", fontSize: 15, textColor: .black)
     }()
     
     override init(frame: CGRect) {
@@ -66,7 +66,7 @@ extension SmokingTimeView{
             if case let (d?,h?,m?,s?) = (offsetComps.day,offsetComps.hour,offsetComps.minute,offsetComps.second){
                 smokingTime.text = "\(d)일 \(h)시간 \(m)분 \(s)초"
                 guard let money = d*4500 as? NSNumber else{return}
-                smokingSaveMoney.text = "\(decimalNumber(data: money))"
+                smokingSaveMoney.text = "\(decimalNumber(data: money)) 원"
             }
         }
     }

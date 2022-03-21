@@ -10,8 +10,7 @@ import UIKit
 import SnapKit
 
 class HomeViewController:UIViewController{
-    
-    let wises:[wise] = Bundle.main.decode("wise.json")
+
     
     var TextView : UILabel = {
         let text = UILabel()
@@ -70,6 +69,7 @@ class HomeViewController:UIViewController{
     
     let quitView = QuitTimeView()
     let smokingView = SmokingTimeView()
+    let wiseView = WiseView()
     
 
     //MARK: - ViewDidLoad
@@ -111,7 +111,8 @@ class HomeViewController:UIViewController{
             suppressButton,
             LineView,
             quitView,
-            smokingView
+            smokingView,
+            wiseView
         ].forEach{
             view.addSubview($0)
         }
@@ -167,6 +168,12 @@ class HomeViewController:UIViewController{
             $0.leading.equalTo(quitView.snp.leading)
             $0.trailing.equalTo(quitView.snp.trailing)
         }
+        
+        wiseView.snp.makeConstraints{
+            $0.top.equalTo(smokingView.snp.bottom).offset(20)
+            $0.leading.equalTo(smokingView.snp.leading)
+            $0.trailing.equalTo(smokingView.snp.trailing)
+        }
     }
     
     @objc func tappedTitleButton(){
@@ -178,8 +185,6 @@ class HomeViewController:UIViewController{
     }
     @objc func tappedFailButton(){
         print("Tapped Fail Button")
-        
-        print(wises)
     }
     @objc func tappedSupressButton(){
         print("Tapped Supress Button")

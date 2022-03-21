@@ -14,6 +14,7 @@
 		186D245727DD952E0044B8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 186D245627DD952E0044B8A8 /* Assets.xcassets */; };
 		186D246727DDB0390044B8A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D246627DDB0390044B8A8 /* HomeViewController.swift */; };
 		186D246A27DDB09E0044B8A8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 186D246927DDB09E0044B8A8 /* SnapKit */; };
+		188B2AB427E88265004B9DA9 /* WiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B2AB327E88265004B9DA9 /* WiseView.swift */; };
 		188E935127E437DE007202F5 /* SmokingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188E935027E437DE007202F5 /* SmokingTimeView.swift */; };
 		188E935427E43A42007202F5 /* wise.json in Resources */ = {isa = PBXBuildFile; fileRef = 188E935327E43A42007202F5 /* wise.json */; };
 		188E935627E43DC9007202F5 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188E935527E43DC9007202F5 /* CodableExtensions.swift */; };
@@ -30,6 +31,7 @@
 		186D245627DD952E0044B8A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		186D245B27DD952E0044B8A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186D246627DDB0390044B8A8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		188B2AB327E88265004B9DA9 /* WiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseView.swift; sourceTree = "<group>"; };
 		188E935027E437DE007202F5 /* SmokingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingTimeView.swift; sourceTree = "<group>"; };
 		188E935327E43A42007202F5 /* wise.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wise.json; sourceTree = "<group>"; };
 		188E935527E43DC9007202F5 /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				1829DB7C27E3E1F300A411D8 /* QuitTimeView.swift */,
 				188E935027E437DE007202F5 /* SmokingTimeView.swift */,
+				188B2AB327E88265004B9DA9 /* WiseView.swift */,
 			);
 			path = VIews;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			files = (
 				18C2AEA927E246E400BD17DE /* Extension.swift in Sources */,
 				188E935927E4498B007202F5 /* wiseModel.swift in Sources */,
+				188B2AB427E88265004B9DA9 /* WiseView.swift in Sources */,
 				186D245227DD952C0044B8A8 /* ViewController.swift in Sources */,
 				1829DB7D27E3E1F300A411D8 /* QuitTimeView.swift in Sources */,
 				186D244E27DD952C0044B8A8 /* AppDelegate.swift in Sources */,
